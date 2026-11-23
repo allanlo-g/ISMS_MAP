@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0c1529">
+<title>ISMS 工作地圖｜把程序書變成每天做得完的工作</title>
+<meta name="description" content="不只為了驗證，讓 ISMS 成為日常。每日巡檢、資安情資、月報與量測，依頻率排好、點一下留紀錄。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ISMS 工作地圖">
+<meta property="og:title" content="ISMS 工作地圖｜把程序書變成每天做得完的工作">
+<meta property="og:description" content="不只為了驗證，讓 ISMS 成為日常。每日巡檢、資安情資、月報與量測，依頻率排好、點一下留紀錄。">
+<meta property="og:image" content="og-promo-123hi.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ISMS 工作地圖｜把程序書變成每天做得完的工作">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ISMS 工作地圖｜把程序書變成每天做得完的工作">
+<meta name="twitter:description" content="不只為了驗證，讓 ISMS 成為日常。每日巡檢、資安情資、月報與量測，依頻率排好、點一下留紀錄。">
+<meta name="twitter:image" content="og-promo-123hi.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%230c1529%22/%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2220%22%20fill%3D%22none%22%20stroke%3D%22%2335c6b4%22%20stroke-width%3D%224%22/%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2211%22%20fill%3D%22none%22%20stroke%3D%22%23f2b01e%22%20stroke-width%3D%223%22%20stroke-dasharray%3D%224%204%22/%3E%3Cpath%20d%3D%22M32%2032V14%22%20stroke%3D%22%23f2b01e%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@700;900&display=swap">
+<style>
+:root{--bg:#0c1529;--bg2:#13213f;--tx:#f3efe4;--mut:#aab4c8;--dim:#75819a;--cy:#35c6b4;--vi:#5b8def;--mg:#f2b01e;--gr:#4ccf8f;--am:#f2b01e;--rd:#ef6a5b;--line:rgba(243,239,228,.14);--glass:rgba(243,239,228,.04);--max:1180px;--grad:linear-gradient(100deg,#35c6b4 0%,#9ad07a 45%,#f2b01e 100%);--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;--serif:"Noto Serif TC","Songti TC","PMingLiU",serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{background:var(--bg);color:var(--tx);font:400 16px/1.7 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--cy);outline-offset:3px;border-radius:6px}
+#bgc{position:fixed;inset:0;z-index:-1;width:100%;height:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+section{padding:96px 0;position:relative}
+.center{text-align:center;max-width:820px;margin:0 auto 44px}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font:700 15px/1 "Noto Sans TC",sans-serif;letter-spacing:.22em;color:var(--am);margin-bottom:18px}
+.eyebrow::before,.center .eyebrow::after{content:"";width:30px;height:2px;background:var(--am)}
+h1{font-family:var(--serif);font-size:clamp(34px,4.8vw,62px);font-weight:900;line-height:1.18;letter-spacing:.01em;text-wrap:balance}
+h2{font-family:var(--serif);font-size:clamp(28px,3.7vw,44px);font-weight:900;line-height:1.25;text-wrap:balance}
+h3{font-size:19px;font-weight:700;line-height:1.4}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--mut);font-size:17.5px;margin-top:16px}
+.glass{background:var(--glass);border:1px solid var(--line);border-radius:10px;backdrop-filter:blur(8px)}
+.mono{font-family:var(--mono)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:8px;font-weight:700;text-decoration:none;border:1px solid var(--line);background:var(--glass);transition:transform .15s,box-shadow .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px);border-color:var(--cy)}
+.btn.pri{background:var(--am);color:#2a1c00;border:0;box-shadow:0 6px 0 #a87500}.btn.pri:hover{transform:translateY(2px);box-shadow:0 4px 0 #a87500}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease var(--d,0s),transform .7s cubic-bezier(.2,.8,.2,1) var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(12,21,41,.78);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:22px;height:62px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:900;font-size:19px;text-decoration:none;white-space:nowrap}
+.brand i{width:26px;height:26px;border-radius:50%;border:2px solid var(--cy);position:relative;display:block}
+.brand i::after{content:"";position:absolute;left:50%;top:50%;width:2px;height:11px;background:var(--am);transform-origin:50% 0;animation:spin 6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+nav .links{display:flex;gap:20px;margin-left:auto;font-size:14.5px;color:var(--mut)}
+nav .links a{text-decoration:none;white-space:nowrap}nav .links a:hover{color:var(--tx)}
+nav .btn{padding:8px 16px;font-size:14px;border-color:var(--cy);color:var(--cy)}
+@media(max-width:900px){nav .links{display:none}nav .btn{margin-left:auto}}
+/* hero */
+.hero{padding:150px 0 90px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.hero p.lead{max-width:560px}
+.hero .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+.hero .facts{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;font:500 13.5px/1.4 var(--mono);color:var(--mut)}
+.hero .facts span::before{content:"▸ ";color:var(--cy)}
+.orbit{position:relative;width:min(100%,520px);aspect-ratio:1;margin:0 auto}
+.ring{position:absolute;border-radius:50%;border:1px solid var(--line);inset:calc(var(--i)*8.4%)}
+.ring.dash{border-style:dashed;border-color:rgba(242,176,30,.3)}
+.sat{position:absolute;inset:calc(var(--i)*8.4%);border-radius:50%;animation:spin var(--t) linear infinite;animation-direction:var(--dir,normal)}
+.sat b{position:absolute;left:50%;top:-6px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--c);box-shadow:0 0 14px var(--c)}
+.core{position:absolute;inset:36%;border-radius:50%;background:radial-gradient(circle at 35% 30%,#1f8f86,#12264a 72%);display:grid;place-items:center;box-shadow:0 0 70px rgba(53,198,180,.45);font-family:var(--serif);animation:breathe 4s ease-in-out infinite;text-align:center;font-weight:900;font-size:clamp(13px,1.5vw,17px);line-height:1.3}
+@keyframes breathe{50%{box-shadow:0 0 110px rgba(242,176,30,.45)}}
+.mo{position:absolute;left:50%;top:50%;font:500 12.5px/1 var(--mono);color:var(--dim);transform:translate(-50%,-50%) rotate(calc(var(--k)*30deg)) translateY(-248px) rotate(calc(var(--k)*-30deg))}
+.mo.now{color:var(--am);font-weight:700}
+.badge{position:absolute;font:700 13px/1 "Noto Sans TC",sans-serif;padding:8px 12px;border-radius:6px;border:1px solid var(--line);background:rgba(19,33,63,.92);white-space:nowrap;animation:floaty 5s ease-in-out infinite;animation-delay:var(--dl,0s)}
+.badge b{color:var(--c)}
+@keyframes floaty{50%{transform:translateY(-9px)}}
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr}.mo{display:none}}
+/* engine */
+.engine{display:grid;grid-template-columns:.95fr 1.05fr;gap:22px;align-items:start}
+.panel{padding:26px}
+.panel h4{font-size:15px;font-weight:700;margin:20px 0 10px;color:var(--mut)}.panel h4:first-child{margin-top:0}
+.panel h4 b{font-family:var(--mono);color:var(--cy);margin-right:8px}
+.opts{display:grid;gap:8px}.opts.c6{grid-template-columns:repeat(6,1fr)}.opts.c3{grid-template-columns:repeat(3,1fr)}
+.opt{padding:11px 8px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.02);font-weight:700;font-size:15px;transition:all .18s;text-align:center}
+.opt small{display:block;font-weight:400;font-size:12px;color:var(--dim);margin-top:2px}
+.opt:hover{border-color:var(--cy)}
+.opt.on{background:var(--am);border-color:var(--am);color:#2a1c00}.opt.on small{color:#5a4200}
+.hud{position:relative;overflow:hidden}
+.hud::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--grad);animation:scan 3.4s linear infinite}
+@keyframes scan{0%{transform:translateY(0);opacity:.9}100%{transform:translateY(560px);opacity:0}}
+.hud-top{display:flex;justify-content:space-between;font-size:13px;color:var(--cy);margin-bottom:16px}
+.kp{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.k{padding:14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.02)}
+.k span{display:block;font-size:13px;color:var(--mut)}.k b{display:block;font:900 40px/1.1 var(--mono)}.k small{font-size:12px;color:var(--dim)}
+.theme{padding:10px 14px;border-radius:10px;background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.35);color:var(--am);font-weight:700;font-size:14.5px;margin-bottom:14px}
+.fq{border-top:1px solid var(--line)}
+.fq button{display:flex;align-items:center;gap:12px;width:100%;padding:11px 2px;background:none;border:0;text-align:left;font-weight:700}
+.fq i{width:10px;height:10px;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c);flex:none}
+.fq .bar{flex:1;height:6px;border-radius:3px;background:rgba(255,255,255,.06);overflow:hidden}.fq .bar u{display:block;height:100%;background:var(--c);border-radius:3px;transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.fq em{font:700 17px/1 var(--mono);font-style:normal;min-width:44px;text-align:right}
+.fq ul{list-style:none;padding:0 0 10px 22px;display:none}.fq.open ul{display:block}
+.fq li{font-size:14px;color:var(--mut);padding:4px 0;display:flex;gap:10px;justify-content:space-between;border-bottom:1px dashed rgba(120,200,255,.08)}
+.fq li code{font:500 12px/1.6 var(--mono);color:var(--cy);white-space:nowrap}
+.fq li.aud::before{content:"稽";font-size:11px;color:var(--rd);border:1px solid var(--rd);border-radius:4px;padding:0 4px;margin-right:6px;flex:none;align-self:center}
+.fq li span{flex:1}
+.note{font-size:13px;color:var(--dim);margin-top:14px}
+@media(max-width:900px){.engine{grid-template-columns:1fr}.opts.c6{grid-template-columns:repeat(4,1fr)}}
+/* rail */
+.pipe{position:relative;padding:30px 0 10px}
+.rail{position:absolute;left:8%;right:8%;top:62px;height:3px;background:rgba(120,200,255,.14);border-radius:2px;overflow:hidden}
+.rail i{position:absolute;top:0;left:-20%;width:20%;height:100%;background:var(--grad);animation:run 4.5s linear infinite;animation-delay:var(--dl)}
+@keyframes run{to{left:110%}}
+.gates{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;position:relative}
+.gate{background:none;border:0;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.gate .hex{width:68px;height:68px;border-radius:50%;border:2px solid var(--line);background:var(--bg2);display:grid;place-items:center;font:700 16px/1.2 var(--mono);color:var(--mut);transition:all .2s}
+.gate b{font-size:16px;margin-top:8px}.gate small{color:var(--dim);font-size:13px}
+.gate.cur .hex{border-color:var(--am);color:#2a1c00;background:var(--am);box-shadow:0 0 0 8px rgba(242,176,30,.16)}
+.gdet{margin-top:26px;padding:22px 26px;display:grid;grid-template-columns:1fr 1fr;gap:6px 30px}
+.gdet h3{grid-column:1/-1;margin-bottom:6px}
+.gdet div{font-size:14.5px;color:var(--mut);display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed rgba(120,200,255,.1);padding:5px 0}
+.gdet code{font:500 12.5px/1.6 var(--mono);color:var(--cy);white-space:nowrap}
+.cyc{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.cyc span{font:500 13.5px/1 var(--mono);padding:9px 14px;border-radius:999px;border:1px solid var(--line);color:var(--mut)}
+.cyc span b{color:var(--am)}
+@media(max-width:760px){.gates{grid-template-columns:repeat(5,minmax(0,1fr))}.gate b{font-size:13px}.gate small{display:none}.gate .hex{width:46px;height:46px;font-size:12px}.rail{top:52px}.gdet{grid-template-columns:1fr}}
+/* cti */
+.cti{display:grid;grid-template-columns:1.25fr .75fr;gap:22px}
+.steps{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.steps button{flex:1 1 0;min-width:96px;padding:10px 8px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.02);font-weight:700;font-size:14px;position:relative;overflow:hidden}
+.steps button b{font-family:var(--mono);color:var(--cy);margin-right:6px}
+.steps button.on{border-color:var(--cy);background:rgba(53,198,180,.14)}
+.steps button.on::after{content:"";position:absolute;left:0;bottom:0;height:2px;background:var(--grad);width:100%;transform-origin:0 50%;animation:prog var(--dur,3s) linear}
+@keyframes prog{from{transform:scaleX(0)}}
+.cnt{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:14px}
+.cnt div{font-size:12.5px;color:var(--mut)}.cnt b{display:block;font:900 30px/1.1 var(--mono);color:var(--tx)}
+.tiles{position:relative;height:238px}
+.tile{position:absolute;width:6.3%;height:30px;border-radius:5px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);transition:left .8s cubic-bezier(.2,.8,.2,1),top .8s cubic-bezier(.2,.8,.2,1),opacity .4s,transform .4s,background .3s;opacity:0;transform:scale(.3);font:700 10px/28px var(--mono);text-align:center;color:transparent}
+.tile.in{opacity:1;transform:none}
+.tile.hit{background:rgba(251,191,36,.18);border-color:var(--am);color:var(--am)}
+.tile.kev{background:rgba(251,113,133,.2);border-color:var(--rd);color:var(--rd)}
+.tile.adopt{background:rgba(52,211,153,.28);border-color:var(--gr);color:var(--gr)}
+.tile.gone{opacity:.0;transform:translateY(34px) scale(.5)}
+.term{padding:18px 20px;font:500 13px/1.75 var(--mono);color:var(--mut);height:100%;min-height:330px;display:flex;flex-direction:column}
+.term .ln{white-space:pre-wrap}.term .ln b{color:var(--cy);font-weight:500}.term .ln em{color:var(--gr);font-style:normal}.term .ln s{color:var(--am);text-decoration:none}
+.term .cur::after{content:"▍";animation:blink 1s steps(2) infinite;color:var(--cy)}
+@keyframes blink{50%{opacity:0}}
+.term .ctl{margin-top:auto;display:flex;gap:10px;padding-top:12px}
+.term .ctl button{padding:8px 14px;border-radius:8px;border:1px solid var(--line);background:rgba(255,255,255,.03);font:700 13px/1 "Noto Sans TC",sans-serif}
+.formrow{margin-top:14px;padding:12px 14px;border-radius:10px;background:#f7f5ee;color:#16202e;font-size:14px;display:none;font-family:"DFKai-SB","標楷體","Kaiti TC",serif}
+.formrow.show{display:block;animation:up .5s ease}
+@keyframes up{from{opacity:0;transform:translateY(14px)}}
+.formrow b{color:#b3261e;font-family:var(--mono)}
+@media(max-width:900px){.cti{grid-template-columns:1fr}.cnt{grid-template-columns:repeat(3,1fr)}}
+/* flow */
+.flow{display:grid;grid-template-columns:1fr 120px 1fr;gap:0;align-items:center}
+.cal{padding:22px}
+.cal .row{display:grid;grid-template-columns:150px repeat(20,1fr);gap:3px;align-items:center;margin-bottom:5px;font-size:13px;color:var(--mut)}
+.cal .row i{height:15px;border-radius:3px;background:rgba(255,255,255,.06);display:block;transition:background .25s}
+.cal .row i.y{background:var(--gr)}.cal .row i.n{background:var(--rd)}
+.wire{height:150px;position:relative}
+.wire::before{content:"";position:absolute;left:0;right:0;top:50%;height:2px;background:rgba(120,200,255,.2)}
+.wire b{position:absolute;top:50%;left:0;width:9px;height:9px;margin-top:-4px;border-radius:50%;background:var(--cy);box-shadow:0 0 12px var(--cy);animation:slide 1.8s linear infinite;animation-delay:var(--dl)}
+@keyframes slide{to{left:100%}}
+.rep{background:#f7f5ee;color:#16202e;border-radius:8px;padding:20px 24px;box-shadow:0 24px 60px rgba(0,0,0,.5);transform:rotate(1deg)}
+.rep h5{font-size:17px;text-align:center;margin-bottom:10px}
+.rep div{display:flex;justify-content:space-between;border-bottom:1px solid #cfc9b8;padding:6px 0;font-size:14.5px}
+.rep div b{font:900 19px/1.2 var(--mono);color:#0f6f72}
+.rep .sg{border:0;gap:10px;margin-top:10px}.rep .sg span{flex:1;border:1px solid #777;height:44px;font-size:12px;padding:4px 6px}
+@media(max-width:900px){.flow{grid-template-columns:1fr}.wire{height:60px;transform:rotate(90deg);width:60px;margin:0 auto}.cal .row{grid-template-columns:110px repeat(20,1fr)}}
+/* features */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{padding:24px;position:relative;overflow:hidden;transition:transform .2s,border-color .2s}
+.card{border-top:3px solid var(--cy)}.card:nth-child(3n+2){border-top-color:var(--am)}.card:nth-child(3n){border-top-color:var(--vi)}.card:hover{transform:translateY(-4px)}
+.card p{color:var(--mut);font-size:14.5px;margin-top:8px}
+.card .viz{height:74px;margin-bottom:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.chip{font:500 12.5px/1 var(--mono);padding:7px 10px;border-radius:7px;border:1px solid var(--c,var(--line));color:var(--c,var(--mut))}
+.chain{display:flex;align-items:center;gap:6px;font:500 12.5px/1 var(--mono);color:var(--cy)}.chain i{width:18px;height:1px;background:var(--cy);display:block}
+.bars{display:flex;align-items:flex-end;gap:4px;height:64px;width:100%}.bars i{flex:1;background:var(--grad);border-radius:3px 3px 0 0;height:var(--h);animation:grow 1.2s ease both;animation-delay:var(--dl);transform-origin:50% 100%}
+@keyframes grow{from{transform:scaleY(0)}}
+.type{font:700 17px/1 var(--mono);color:var(--am);white-space:nowrap;overflow:hidden;border-right:2px solid var(--am);width:0;animation:tin 5s steps(17) infinite}
+@keyframes tin{0%,8%{width:0}55%,92%{width:17ch}100%{width:0}}
+.tag-new{position:absolute;top:14px;right:14px;font:700 11px/1 var(--mono);color:#2a1c00;background:var(--am);padding:5px 8px;border-radius:6px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+/* screens */
+.tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:18px}
+.tabs button{padding:9px 16px;border-radius:8px;border:1px solid var(--line);background:var(--glass);font-weight:700;font-size:14.5px}
+.tabs button.on{background:var(--am);color:#2a1c00;border-color:transparent}
+.frame{border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 40px 100px rgba(0,0,0,.55)}
+.frame .top{height:34px;background:#101d3a;display:flex;align-items:center;gap:7px;padding:0 14px;font:500 12px/1 var(--mono);color:var(--dim)}
+.frame .top i{width:10px;height:10px;border-radius:50%;background:#33415e;display:block}
+.frame .view{height:min(64vh,620px);overflow:auto;background:#f1f3ef}
+.frame img{display:block;width:100%}
+.stats{display:grid;grid-template-columns:repeat(7,1fr);gap:12px;margin-top:34px;text-align:center}
+.stats b{display:block;font:900 clamp(28px,3.4vw,44px)/1.1 var(--mono)}.stats span{font-size:13.5px;color:var(--mut)}
+@media(max-width:900px){.stats{grid-template-columns:repeat(4,1fr)}}
+/* play */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.play{padding:30px;text-decoration:none;display:block;transition:transform .2s,border-color .2s}
+.play:hover{transform:translateY(-4px);border-color:var(--am)}
+.play .ic{width:54px;height:54px;border-radius:50%;background:var(--am);display:grid;place-items:center;font-size:22px;color:#2a1c00;margin-bottom:16px}
+.play p{color:var(--mut);margin-top:8px}.play span{display:inline-block;margin-top:14px;color:var(--cy);font-weight:700}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+.final{text-align:center;padding:120px 0}
+.final .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+footer{border-top:1px solid var(--line);padding:36px 0 48px;color:var(--dim);font-size:13.5px}
+footer .wrap{display:grid;gap:10px}
+
+/* 手機 */
+@media(max-width:640px){
+  section{padding:64px 0}.hero{padding:104px 0 56px}.final{padding:80px 0}
+  .wrap{padding:0 18px}.center{margin-bottom:30px}
+  h2 .grad,h1 .grad{display:block}
+  .lead{font-size:16px}
+  .hero .cta .btn{flex:1 1 100%;justify-content:center}
+  .orbit{width:82%;margin-top:26px}
+  .badge{font-size:12px;padding:6px 9px}
+  .badge:nth-of-type(1){left:-9%!important}.badge:nth-of-type(2){right:-9%!important}.badge:nth-of-type(3){right:-11%!important}.badge:nth-of-type(4){left:-11%!important}
+  .panel{padding:18px}.kp{gap:8px}.k{padding:10px}.k b{font-size:30px}.k span{font-size:12px}
+  .opt{padding:12px 4px;min-height:46px}
+  .fq li{flex-wrap:wrap}.fq li code{white-space:normal}
+  .gdet{padding:18px}.gdet div{flex-direction:column;gap:0}
+  .steps button{min-width:44%;min-height:44px}
+  .cnt b{font-size:24px}
+  .tiles{height:212px}.tile{font-size:0;height:26px}
+  .term{min-height:250px}.term .ctl button{min-height:42px;padding:8px 18px}
+  .cal{padding:16px}.cal .row{grid-template-columns:92px repeat(20,1fr);gap:2px;font-size:11.5px}.cal .row i{height:13px}
+  .wire{height:46px;width:46px}
+  .rep{transform:none}
+  .tabs{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch}.tabs button{flex:none;min-height:42px}
+  .frame .view{height:62vh}.frame img{width:920px;max-width:none}
+  .swipe{display:block!important}
+  .stats{grid-template-columns:repeat(3,1fr);gap:16px 8px}.stats div:last-child{grid-column:1/-1}
+  .play{padding:22px}.final .cta .btn{flex:1 1 100%;justify-content:center}
+  nav .wrap{height:56px}.brand{font-size:17px}
+}
+.nb{display:inline-block}
+.swipe{display:none;text-align:center;font-size:13px;color:var(--mut);margin-top:10px}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none;transition:none}}
+</style></head><body>
+<canvas id="bgc" aria-hidden="true"></canvas>
+<nav><div class="wrap"><a class="brand" href="#top"><i></i>ISMS 工作地圖</a>
+  <div class="links"><a href="#engine">工作引擎</a><a href="#rhythm">稽核節奏</a><a href="#cti">情資自動化</a><a href="#flow">日誌與月報</a><a href="#features">產品特色</a><a href="#screens">系統畫面</a><a href="#play">互動體驗</a></div>
+  <a class="btn" href="#contact">與我們聯絡</a></div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+  <div><span class="eyebrow rv">把程序書變成每天做得完的工作</span><br>
+    <h1 class="rv" style="--d:.05s"><span style="white-space:nowrap">ISMS 不只為了驗證</span><br><span class="grad">讓它成為日常</span></h1>
+    <p class="lead rv" style="--d:.1s">讀完機關自己的四階文件，把每一條「應該做」排成每日、每週、每月、每季、每年的工作清單。點一下留下紀錄，情資自動分流，月報自動彙整。</p>
+    <div class="cta rv" style="--d:.15s"><a class="btn pri" href="#engine">親手排一次本月工作</a><a class="btn" href="game123hi.html">玩 3 分鐘互動遊戲 ↗</a></div>
+    <div class="facts rv" style="--d:.2s"><span>單一網頁檔，免安裝</span><span>資料留在機關自己的電腦</span><span>列印即表單，紙本簽核照舊</span></div></div>
+  <div class="orbit rv" style="--d:.15s" aria-hidden="true">
+    <div class="ring" style="--i:0"></div><div class="ring dash" style="--i:1"></div><div class="ring" style="--i:2"></div><div class="ring dash" style="--i:3"></div>
+    <div class="sat" style="--i:0;--t:60s;--c:#34d399"><b></b></div><div class="sat" style="--i:1;--t:34s;--c:#e879f9;--dir:reverse"><b></b></div><div class="sat" style="--i:2;--t:20s;--c:#fbbf24"><b></b></div><div class="sat" style="--i:3;--t:9s;--c:#22d3ee;--dir:reverse"><b></b></div>
+    <div id="mos"></div><div class="core">ISMS<br>工作地圖</div>
+    <span class="badge" style="left:-2%;top:16%;--c:#22d3ee"><b>每日</b> 7</span><span class="badge" style="right:-3%;top:8%;--c:#34d399;--dl:.8s"><b>每年</b> 49</span><span class="badge" style="right:-6%;top:52%;--c:#fbbf24;--dl:1.6s"><b>每月</b> 12</span><span class="badge" style="left:-5%;top:60%;--c:#e879f9;--dl:2.2s"><b>每季</b> 2</span><span class="badge" style="left:14%;bottom:-1%;--c:#fb7185;--dl:1.2s"><b>不定期</b> 20</span><span class="badge" style="right:12%;bottom:2%;--c:#8b5cf6;--dl:.4s"><b>半年</b> 4</span>
+  </div></div></header>
+
+<section id="engine"><div class="wrap">
+  <div class="center"><span class="eyebrow rv">工作引擎</span><h2 class="rv">選一個月份，<span class="grad">看系統排出哪些工作</span></h2>
+    <p class="lead rv">換月份、換外部稽核的月份、換視角，右側會即時列出當月工作與要用的表單。資料是示範機關「烏托邦機關」的 95 項工作。</p></div>
+  <div class="engine">
+    <div class="panel glass rv"><h4><b>01</b> 月份</h4><div class="opts c6" id="oM"></div>
+      <h4><b>02</b> 外部稽核排在幾月</h4><div class="opts c3" id="oE"></div>
+      <h4><b>03</b> 要看誰的工作</h4><div class="opts c3" id="oV"></div>
+      <p class="note">內稽計畫、內部稽核、管理審查、矯正結案會跟著外部稽核的月份自動前後移動。</p></div>
+    <div class="panel glass hud rv" style="--d:.1s"><div class="hud-top mono"><span>即時排程</span><span id="sig"></span></div>
+      <div class="kp"><div class="k"><span>本月工作</span><b class="grad" id="kN">0</b><small>件</small></div><div class="k"><span>其中稽核必要</span><b class="grad" id="kA">0</b><small>件</small></div><div class="k"><span>用到的表單</span><b class="grad" id="kF">0</b><small>種</small></div></div>
+      <div class="theme" id="theme"></div><div id="fqs"></div>
+      <p class="note">點任一列展開明細。每一項都標明使用的表單編號，「稽」代表稽核時一定會看的紀錄。</p></div>
+  </div></div></section>
+
+<section id="rhythm"><div class="wrap">
+  <div class="center"><span class="eyebrow rv">稽核節奏</span><h2 class="rv">一年五個節點，<span class="grad">跟著外稽月份自動排好</span></h2>
+    <p class="lead rv">稽核不是十月才開始的事。系統把內稽計畫到矯正結案排成一條線，每個節點要交什麼、用哪張表，點開就看得到。</p></div>
+  <div class="pipe rv"><div class="rail"><i style="--dl:0s"></i><i style="--dl:1.5s"></i><i style="--dl:3s"></i></div><div class="gates" id="gates"></div></div>
+  <div class="glass gdet rv" id="gdet"></div>
+  <div class="cyc rv"><span><b>第 1 年</b> 續評（Renew）</span><span><b>第 2 年</b> 監督稽核</span><span><b>第 3 年</b> 監督稽核</span><span>三年一循環，跨年度持續使用</span></div>
+</div></section>
+
+<section id="cti"><div class="wrap">
+  <div class="center"><span class="eyebrow rv">情資自動化</span><h2 class="rv">每月上百則情資，<span class="grad"><span class="nb">同步、初篩、</span><span class="nb">判斷、列印</span><span class="nb">一次完成</span></span></h2>
+    <p class="lead rv">下面是系統實際的處理流程，用示範資料自動播放。也可以點上方的步驟，自己一步一步看。</p></div>
+  <div class="cti">
+    <div class="panel glass rv"><div class="steps" id="steps"></div>
+      <div class="cnt"><div><b id="cA">0</b>蒐集</div><div><b id="cT">0</b>待判斷</div><div><b id="cI">0</b>已納入</div><div><b id="cO">0</b>不適用</div><div><b id="cK">0</b>KEV 已知被利用</div></div>
+      <div class="tiles" id="tiles"></div>
+      <div class="formrow" id="formrow">資訊安全情資管理表　IS-P-04-052　紀錄編號：<b id="rno"></b><br>蒐集 84 則，納入 2 則，不適用 45 則，待判斷 37 則</div></div>
+    <div class="glass term rv" style="--d:.1s"><div id="log"></div><div class="ctl"><button id="ctiPlay">暫停</button><button id="ctiRe">重播</button></div></div>
+  </div></div></section>
+
+<section id="flow"><div class="wrap">
+  <div class="center"><span class="eyebrow rv">日誌到月報</span><h2 class="rv">每天點一下，<span class="grad">月底只剩列印和簽名</span></h2>
+    <p class="lead rv">每日巡檢和機房工作日誌在做的當下留紀錄。月報的巡檢天數、異常、情資件數和量測累計，都從這些紀錄自動帶入。</p></div>
+  <div class="flow rv"><div class="glass cal" id="cal"></div><div class="wire" aria-hidden="true"><b style="--dl:0s"></b><b style="--dl:.6s"></b><b style="--dl:1.2s"></b></div>
+    <div class="rep"><h5>烏托邦機關　ISMS 工作月報</h5><div>每日巡檢 實際／應執行<b id="rA">0／20</b></div><div>異常件數<b id="rB">0</b></div><div>資安情資 蒐集／納入<b>84／2</b></div><div>有效性量測<b>27 項累計</b></div><div class="sg"><span>承辦人</span><span>主管審查</span></div></div></div>
+</div></section>
+
+<section id="features"><div class="wrap">
+  <div class="center"><span class="eyebrow rv">產品特色</span><h2 class="rv">ISMS 承辦人每天需要的，<span class="grad">都在同一張地圖上</span></h2></div>
+  <div class="grid">
+    <div class="card glass rv"><div class="viz"><span class="chip" style="--c:#22d3ee">每日</span><span class="chip" style="--c:#34d399">每週</span><span class="chip" style="--c:#fbbf24">每月</span><span class="chip" style="--c:#8b5cf6">每季</span><span class="chip" style="--c:#e879f9">半年</span><span class="chip" style="--c:#34d399">每年</span><span class="chip" style="--c:#fb7185">不定期</span></div><h3>七種頻率，一張地圖</h3><p>日常巡檢到年度稽核，全部依執行頻率歸類，打開就知道今天、這個月該做什麼。</p></div>
+    <div class="card glass rv" style="--d:.06s"><div class="viz"><div class="chain">IS-P-02-011<i></i>資安情資<i></i>IS-P-04-052</div></div><h3>每一項都標明依據與表單</h3><p>工作項目寫明出自哪一份程序書、要留哪一張表單。換人接手也不會斷線。</p></div>
+    <div class="card glass rv" style="--d:.12s"><span class="tag-new">NEW</span><div class="viz"><span class="chip" style="--c:#34d399">主機 ✓</span><span class="chip" style="--c:#34d399">冷氣 ✓</span><span class="chip" style="--c:#fb7185">UPS ! 已叫修</span></div><h3>機房工作日誌線上填</h3><p>設備項目各機關可自訂。異常自動標示，照原表單格式列印，月結一鍵彙總。</p></div>
+    <div class="card glass rv"><div class="viz"><div class="bars" id="bars"></div></div><h3>量測逐月累計</h3><p>27 項有效性量測和 4 個資安目標每月填、自動累計，哪一項落後當月就看得到。</p></div>
+    <div class="card glass rv" style="--d:.06s"><div class="viz"><div class="type">P-R-052-261130-01</div></div><h3>紀錄編號自動產生</h3><p>填好日期，系統依文件管理程序書的編碼規則產生紀錄編號，仍可手動修改。</p></div>
+    <div class="card glass rv" style="--d:.12s"><div class="viz"><span class="chip">新進人員</span><span class="chip">離職調職</span><span class="chip">資安事件</span><span class="chip">設備送修</span></div><h3>22 種事件，時限寫清楚</h3><p>不定期發生的事也有腳本：誰要做、幾天內完成、填哪幾張表。</p></div>
+    <div class="card glass rv"><div class="viz"><span class="chip" style="--c:#fbbf24">7 天未備份提醒</span><span class="chip" style="--c:#34d399">每日自動備份</span></div><h3>自動備份與提醒</h3><p>指定資料夾後每次變更自動寫入備份檔；沒設定也會在該備份時提醒。</p></div>
+    <div class="card glass rv" style="--d:.06s"><div class="viz"><span class="chip" style="--c:#22d3ee">index.html</span><span class="chip">免伺服器</span><span class="chip">免帳號</span></div><h3>單一網頁檔，免安裝</h3><p>用瀏覽器開啟就能用。進度與紀錄存在機關自己的電腦，不經過任何雲端。</p></div>
+    <div class="card glass rv" style="--d:.12s"><div class="viz"><span class="chip">承辦人</span><span class="chip">主管審查</span><span class="chip" style="--c:#e879f9">A4 列印</span></div><h3>紙本簽核照舊</h3><p>月報、量測表、情資管理表都照原表單的頁首與格式列印，印出來就能呈核。</p></div>
+  </div></div></section>
+
+<section id="screens"><div class="wrap">
+  <div class="center"><span class="eyebrow rv">系統畫面</span><h2 class="rv">這些畫面，<span class="grad">來自正在使用的系統</span></h2><p class="lead rv">以下是系統的實際畫面，資料為示範。畫面可以上下捲動。</p></div>
+  <div class="tabs rv" id="stabs"></div>
+  <div class="frame rv"><div class="top"><i></i><i></i><i></i><span id="surl" style="margin-left:10px"></span></div><div class="view" id="sview" tabindex="0"><img id="simg" alt="" src="shots/home.jpg"></div></div>
+  <p class="swipe">畫面可以上下左右拖曳</p>
+  <div class="stats rv" id="stats"></div>
+</div></section>
+
+<section id="play"><div class="wrap">
+  <div class="center"><span class="eyebrow rv">互動體驗</span><h2 class="rv">不想只是看？<span class="grad">親自走一遍</span></h2></div>
+  <div class="two">
+    <a class="glass play rv" href="game123hi.html"><div class="ic">▶</div><h3>互動遊戲：承辦人的 30 天</h3><p>扮演 ISMS 承辦人，從稽核前補紀錄的日子開始，五個關卡、約 3 分鐘，親手做一次巡檢、情資分流、月報和稽核。</p><span>開始遊戲 ↗</span></a>
+    <a class="glass play rv" style="--d:.08s" href="tour123hi.html"><div class="ic">◉</div><h3>互動導覽：1 分 41 秒看完重點</h3><p>自動播放的系統導覽，可以跳章節、調速度；開啟「我來操作」可以自己按同步情資。</p><span>開始導覽 ↗</span></a>
+  </div></div></section>
+
+<section class="final" id="contact"><div class="wrap">
+  <h2 class="rv">讓 ISMS，<span class="grad">從今天開始變成日常</span></h2>
+  <p class="lead rv">每個機關的程序書不同，工作地圖也不同。我們讀完您的四階文件，為您整理專屬的工作項目、頻率與表單。</p>
+  <div class="cta rv"><a class="btn pri" href="https://www.123hi.org" target="_blank" rel="noopener">前往 www.123hi.org ↗</a><a class="btn" href="https://www.123hi.org/isms%E5%B7%A5%E4%BD%9C%E8%A7%80/isms%E5%B7%A5%E4%BD%9C%E5%9C%B0%E5%9C%96" target="_blank" rel="noopener">ISMS 工作地圖的概念 ↗</a></div>
+</div></section>
+
+<footer><div class="wrap"><div><b style="color:var(--tx)">ISMS 工作地圖</b>　系統設計：Allan Lo　｜　<a href="https://www.123hi.org" target="_blank" rel="noopener">www.123hi.org</a></div>
+  <div>本頁出現的「烏托邦機關」為虛構單位，工作項目、情資與紀錄皆為示範資料。系統協助落實與留存 ISMS 作業紀錄，不代表通過任何驗證。</div></div></footer>
+
+<script>
+const ITEMS=[{"i":"d1","n":"系統紀錄異常檢查","f":"daily","m":null,"r":null,"c":"機房工作日誌","d":"IS-P-02-007","w":"網管人員","a":1},{"i":"d2","n":"防火牆狀態與網路節點監控","f":"daily","m":null,"r":null,"c":"機房工作日誌","d":"IS-P-02-007","w":"網管人員","a":0},{"i":"d3","n":"伺服器服務與效能監控（CPU／記憶體／空間／頻寬）","f":"daily","m":null,"r":null,"c":"監控工具畫面、機房工作日誌","d":"IS-P-02-007","w":"系統負責人","a":0},{"i":"d4","n":"核心業務系統資料庫每日完整備份確認","f":"daily","m":null,"r":null,"c":"備份軟體紀錄（Veeam 等）","d":"IS-P-03-005","w":"系統負責人","a":1},{"i":"d5","n":"EDR／防毒告警檢視","f":"daily","m":null,"r":null,"c":"EDR／防毒主控台","d":"IS-P-02-007","w":"網管人員","a":0},{"i":"d6","n":"機房溫濕度檢查（18–27℃、30–70% RH）","f":"daily","m":null,"r":null,"c":"機房工作日誌","d":"IS-P-02-006","w":"網管人員","a":0},{"i":"d7","n":"填寫電腦機房工作日誌","f":"daily","m":null,"r":null,"c":"電腦機房工作日誌","d":"機關規定","w":"管理人員","a":0},{"i":"w1","n":"公文管理系統資料庫備份確認（每週2次）","f":"weekly","m":null,"r":null,"c":"備份軟體紀錄","d":"IS-P-03-005","w":"系統負責人","a":1},{"i":"m1","n":"資安情資管理表","f":"monthly","m":null,"r":null,"c":"IS-P-04-052","d":"IS-P-02-011","w":"資訊工作小組","a":1},{"i":"m2","n":"資通安全網路月報（數發署）","f":"monthly","m":null,"r":null,"c":"月報下載存檔","d":"","w":"資訊工作小組","a":0},{"i":"m3","n":"SOC 報告","f":"monthly","m":null,"r":null,"c":"SOC 月報","d":"","w":"資訊工作小組","a":0},{"i":"m4","n":"機房工作日誌月審查（含日誌審查）","f":"monthly","m":null,"r":null,"c":"機房工作日誌","d":"IS-P-02-007","w":"網管人員→主管","a":1},{"i":"m5","n":"SI 監控報告","f":"monthly","m":null,"r":null,"c":"SI 監控報告","d":"","w":"資訊工作小組","a":1},{"i":"m6","n":"EDR 監控報告","f":"monthly","m":null,"r":null,"c":"EDR 報告","d":"","w":"本機關（已導入之所比照）","a":0},{"i":"m7","n":"設備系統時間一致性檢查（校時）","f":"monthly","m":null,"r":null,"c":"機房工作日誌","d":"IS-P-02-007","w":"網管人員","a":1},{"i":"m8","n":"伺服器防毒主動掃描檢查","f":"monthly","m":null,"r":null,"c":"防毒主控台報表","d":"IS-P-02-007","w":"網管人員","a":1},{"i":"m9","n":"機房門禁紀錄審閱／監視系統妥善確認","f":"monthly","m":null,"r":null,"c":"機房工作日誌","d":"IS-P-02-006","w":"網管人員","a":0},{"i":"m10","n":"ISMS 工作月報（紙本簽核）","f":"monthly","m":null,"r":null,"c":"ISMS 工作月報","d":"IS-P-02-015","w":"資訊工作小組→主管","a":0},{"i":"q1","n":"ISMS 有效性量測逐月紀錄（27 項）","f":"monthly","m":null,"r":null,"c":"IS-P-04-003","d":"IS-P-02-015","w":"資訊工作小組","a":1},{"i":"q2","n":"資訊安全目標量測逐月紀錄（目標01–04）","f":"monthly","m":null,"r":null,"c":"IS-P-04-029","d":"IS-P-04-029","w":"資訊工作小組","a":1},{"i":"q3","n":"矯正處理單追蹤","f":"quarterly","m":[3,6,9,12],"r":null,"c":"IS-P-04-028","d":"IS-P-02-014","w":"稽核小組／追蹤人","a":1},{"i":"q4","n":"系統管理者通行密碼更換（每90天）","f":"quarterly","m":[3,6,9,12],"r":null,"c":"機房工作日誌或系統紀錄","d":"IS-P-03-004","w":"系統負責人","a":1},{"i":"h1","n":"特權帳號清查","f":"half","m":[1,7],"r":null,"c":"IS-P-04-033","d":"IS-P-03-004","w":"資訊工作小組","a":1},{"i":"h2","n":"防火牆物件及規則清查","f":"half","m":[6,12],"r":null,"c":"防火牆政策審查紀錄","d":"IS-P-02-007","w":"網管人員","a":1},{"i":"h3","n":"核心業務系統環境備份","f":"half","m":[6,12],"r":null,"c":"備份紀錄","d":"IS-P-03-005","w":"系統負責人","a":1},{"i":"h4","n":"資訊安全目標有效性半年檢視","f":"half","m":[1,7],"r":null,"c":"IS-P-04-029","d":"IS-P-04-029","w":"資訊工作小組","a":1},{"i":"y01","n":"關注者清單更新","f":"yearly","m":[3],"r":null,"c":"IS-P-04-042","d":"IS-P-01-003","w":"資訊工作小組","a":1},{"i":"y02","n":"關注者會議簡報及會議紀錄","f":"yearly","m":[3],"r":null,"c":"IS-P-04-043","d":"IS-P-01-003","w":"本機關召開","a":1},{"i":"y03","n":"資訊安全組織成員表","f":"yearly","m":[3],"r":null,"c":"IS-P-04-001","d":"IS-P-02-001","w":"資訊工作小組","a":1},{"i":"y04","n":"外部單位聯絡清單","f":"yearly","m":[3],"r":null,"c":"IS-P-04-002","d":"","w":"資訊工作小組","a":1},{"i":"y05","n":"業務流程衝擊分析（BIA）","f":"yearly","m":[3],"r":null,"c":"IS-P-04-022","d":"IS-P-02-012","w":"關鍵業務流程負責人","a":1},{"i":"y06","n":"人員職掌清冊","f":"yearly","m":[4],"r":null,"c":"IS-P-04-016","d":"IS-P-02-005","w":"資訊工作小組","a":1},{"i":"y07","n":"人員資訊安全守則（有修改時）","f":"yearly","m":[4],"r":null,"c":"IS-P-04-017","d":"","w":"資訊工作小組","a":1},{"i":"y08","n":"軟體清冊","f":"yearly","m":[4],"r":null,"c":"IS-P-04-030","d":"IS-P-03-001","w":"資訊工作小組","a":1},{"i":"y09","n":"備份儲存媒體清單","f":"yearly","m":[4],"r":null,"c":"IS-P-04-048","d":"IS-P-03-001","w":"系統負責人","a":1},{"i":"y10","n":"組態安全管理表審查","f":"yearly","m":[4],"r":null,"c":"IS-P-04-050","d":"IS-P-02-007","w":"系統負責人","a":1},{"i":"y11","n":"雲服務專案管理表確認","f":"yearly","m":[4],"r":null,"c":"IS-P-04-051","d":"IS-P-02-010","w":"資訊工作小組","a":1},{"i":"y12","n":"網路架構圖更新","f":"yearly","m":[4],"r":null,"c":"網路架構圖","d":"IS-P-02-007","w":"網管人員","a":1},{"i":"y48","n":"正式環境程式目錄清單檢視","f":"yearly","m":[4],"r":null,"c":"程式目錄清單","d":"IS-P-02-008","w":"系統負責人","a":0},{"i":"y13","n":"文件修訂建議","f":"yearly","m":[4],"r":null,"c":"IS-P-04-005","d":"IS-P-02-002","w":"文管人員","a":0},{"i":"y14","n":"資訊安全管理文件列表","f":"yearly","m":[4],"r":null,"c":"IS-P-04-006","d":"IS-P-02-002","w":"文管人員","a":1},{"i":"y15","n":"外來文件一覽表（法規鑑別）","f":"yearly","m":[4],"r":null,"c":"IS-P-04-007","d":"IS-P-02-002","w":"資訊工作小組","a":1},{"i":"y16","n":"防護需求等級評估表","f":"yearly","m":[5],"r":null,"c":"IS-P-04-044","d":"IS-P-02-004","w":"系統負責人","a":1},{"i":"y17","n":"資訊系統清冊","f":"yearly","m":[5],"r":null,"c":"IS-P-04-045","d":"","w":"系統負責人","a":1},{"i":"y18","n":"一般使用者權限審查","f":"yearly","m":[5],"r":null,"c":"IS-P-04-034","d":"IS-P-03-004","w":"系統負責人","a":1},{"i":"y19","n":"全員資安宣導（3小時／人）簽到","f":"yearly","m":[5],"r":null,"c":"IS-P-04-015","d":"IS-P-02-005","w":"資訊工作小組","a":1},{"i":"y20","n":"教育訓練教材","f":"yearly","m":[5],"r":null,"c":"教材／簡報","d":"","w":"顧問／本機關","a":1},{"i":"y21","n":"資訊人員專業課程（12小時／人）上課證明","f":"yearly","m":null,"r":-2,"c":"上課證明","d":"IS-P-02-005","w":"資訊人員","a":0},{"i":"y22","n":"營運持續運作計畫年度檢討","f":"yearly","m":[6],"r":null,"c":"IS-P-04-023","d":"IS-P-02-012","w":"關鍵業務流程負責人","a":1},{"i":"y23","n":"營運持續演練（演練規劃表＋演練暨處理執行表）","f":"yearly","m":[6],"r":null,"c":"IS-P-04-024","d":"IS-P-02-012","w":"緊急處理小組","a":1},{"i":"y24","n":"備份資料回復驗證","f":"yearly","m":[6],"r":null,"c":"IS-P-04-036","d":"IS-P-03-005","w":"系統負責人","a":1},{"i":"y25","n":"演練用事件通報單／矯正處理單","f":"yearly","m":[6],"r":null,"c":"IS-P-04-021、IS-P-04-028","d":"","w":"緊急處理小組","a":1},{"i":"y26","n":"弱點掃描初掃與處理計畫","f":"yearly","m":[6],"r":null,"c":"初掃報告、弱掃處理計畫","d":"IS-P-02-007","w":"網管人員／廠商","a":1},{"i":"y27","n":"弱點修補（系統變更）","f":"yearly","m":[7],"r":null,"c":"IS-P-04-046","d":"","w":"系統負責人","a":0},{"i":"y28","n":"弱點掃描複掃報告","f":"yearly","m":null,"r":-2,"c":"複掃報告","d":"","w":"網管人員／廠商","a":1},{"i":"y29","n":"委外廠商資安稽核","f":"yearly","m":[6],"r":null,"c":"廠商資安稽核報告（委外廠商資安與個資評鑑表）","d":"IS-P-02-010","w":"主辦單位","a":1},{"i":"y30","n":"網通設備保養／維護紀錄","f":"yearly","m":[6],"r":null,"c":"保養紀錄","d":"IS-P-02-006","w":"網管人員／廠商","a":1},{"i":"y31","n":"環控設備保養（電力、UPS、消防、冷氣）","f":"yearly","m":[6],"r":null,"c":"保養紀錄","d":"IS-P-02-006","w":"總務／廠商","a":1},{"i":"y32","n":"資訊資產盤點","f":"yearly","m":[7],"r":null,"c":"IS-P-04-008","d":"IS-P-02-003","w":"資產權責單位","a":1},{"i":"y33","n":"威脅弱點評估","f":"yearly","m":[7],"r":null,"c":"IS-P-04-009","d":"IS-P-02-004","w":"資訊工作小組","a":1},{"i":"y34","n":"風險評鑑彙整表","f":"yearly","m":[7],"r":null,"c":"IS-P-04-010","d":"","w":"資訊工作小組","a":1},{"i":"y35","n":"風險改善與機會實作計畫表","f":"yearly","m":[7],"r":null,"c":"IS-P-04-011","d":"IS-P-02-004","w":"資訊工作小組","a":1},{"i":"y36","n":"風險與機會評鑑報告","f":"yearly","m":[7],"r":null,"c":"IS-P-04-012","d":"","w":"資訊工作小組","a":1},{"i":"y37","n":"內部稽核計畫","f":"yearly","m":null,"r":-2,"c":"IS-P-04-025","d":"IS-P-02-013","w":"稽核小組","a":1},{"i":"y38","n":"內部稽核執行（稽核表）","f":"yearly","m":null,"r":-1,"c":"IS-P-04-026","d":"IS-P-02-013","w":"稽核小組","a":1},{"i":"y39","n":"內部稽核報告","f":"yearly","m":null,"r":-1,"c":"IS-P-04-027","d":"","w":"稽核小組","a":1},{"i":"y40","n":"內稽發現矯正","f":"yearly","m":null,"r":-1,"c":"IS-P-04-028","d":"IS-P-02-013","w":"受稽單位","a":1},{"i":"y41","n":"管理審查會議（簡報、會議記錄、簽到）","f":"yearly","m":null,"r":-1,"c":"IS-P-04-043","d":"IS-P-02-001","w":"資訊安全委員會","a":1},{"i":"y42","n":"管審輸入：政策審查、職能評估、溝通事項、量測有效性、矯正狀況","f":"yearly","m":null,"r":-1,"c":"管審簡報","d":"IS-P-01-001","w":"資訊工作小組","a":1},{"i":"y43","n":"外部稽核（ISO 27001 驗證／監督稽核）","f":"yearly","m":null,"r":0,"c":"外部稽核報告","d":"","w":"本機關＋所屬單位","a":0},{"i":"y44","n":"外部稽核發現矯正與改善簡報","f":"yearly","m":null,"r":0,"c":"IS-P-04-028","d":"IS-P-02-014","w":"缺失權責單位","a":1},{"i":"y45","n":"外部稽核矯正追蹤結案","f":"yearly","m":null,"r":1,"c":"IS-P-04-028","d":"","w":"追蹤人","a":1},{"i":"y49","n":"資訊設備維護契約到期與維護需求審查","f":"yearly","m":null,"r":1,"c":"維護契約清單","d":"IS-P-02-006","w":"資訊工作小組","a":0},{"i":"y46","n":"次年度教育訓練計畫表","f":"yearly","m":[12],"r":null,"c":"IS-P-04-018","d":"IS-P-02-005","w":"資訊工作小組","a":1},{"i":"y47","n":"量測項目與指標年度檢討（次年度目標）","f":"yearly","m":[12],"r":null,"c":"IS-P-04-003、IS-P-04-029","d":"IS-P-02-015","w":"資訊工作小組","a":1},{"i":"a01","n":"新進人員／廠商保密切結","f":"adhoc","m":null,"r":null,"c":"IS-P-04-013","d":"IS-P-02-005","w":"承辦人員","a":1},{"i":"a02","n":"離職／調職帳號停用","f":"adhoc","m":null,"r":null,"c":"IS-P-04-014","d":"IS-P-02-005","w":"承辦人員","a":0},{"i":"a03","n":"資訊系統帳號申請／異動","f":"adhoc","m":null,"r":null,"c":"IS-P-04-031","d":"IS-P-02-008","w":"申請人→主管","a":0},{"i":"a04","n":"外對內連線申請","f":"adhoc","m":null,"r":null,"c":"IS-P-04-032","d":"IS-P-03-002","w":"廠商→承辦","a":0},{"i":"a05","n":"管理者（特權）帳號申請／異動","f":"adhoc","m":null,"r":null,"c":"IS-P-04-035","d":"IS-P-03-004","w":"系統負責人","a":0},{"i":"a06","n":"人員進出機房登記","f":"adhoc","m":null,"r":null,"c":"IS-P-04-019","d":"IS-P-02-006","w":"陪同人員","a":1},{"i":"a07","n":"設備進出及異動","f":"adhoc","m":null,"r":null,"c":"IS-P-04-020","d":"","w":"網管人員","a":0},{"i":"a08","n":"儲存設備銷毀及資訊刪除","f":"adhoc","m":null,"r":null,"c":"IS-P-04-053","d":"IS-P-02-003","w":"資產權責單位","a":0},{"i":"a09","n":"系統變更申請（含 GCB、雲服務組態）","f":"adhoc","m":null,"r":null,"c":"IS-P-04-046","d":"IS-P-02-010","w":"系統負責人","a":0},{"i":"a10","n":"地籍資料庫資料轉出申請","f":"adhoc","m":null,"r":null,"c":"IS-P-04-047","d":"IS-P-02-008","w":"申請人→主管","a":0},{"i":"a11","n":"資料庫資料異動申請","f":"adhoc","m":null,"r":null,"c":"IS-P-04-049","d":"","w":"系統負責人","a":0},{"i":"a12","n":"可攜式媒體備份控管","f":"adhoc","m":null,"r":null,"c":"IS-P-04-054","d":"IS-P-03-005","w":"系統負責人","a":0},{"i":"a13","n":"應用系統維護申請","f":"adhoc","m":null,"r":null,"c":"IS-P-04-038","d":"IS-P-03-006","w":"業務單位","a":0},{"i":"a14","n":"新系統開發需求評估／系統分析確認","f":"adhoc","m":null,"r":null,"c":"IS-P-04-039、IS-P-04-040","d":"","w":"業務單位／資訊單位","a":0},{"i":"a15","n":"系統測試資料申請","f":"adhoc","m":null,"r":null,"c":"IS-P-04-037","d":"","w":"系統負責人","a":0},{"i":"a16","n":"系統開發測試及上線","f":"adhoc","m":null,"r":null,"c":"IS-P-04-041","d":"IS-P-02-007","w":"系統負責人","a":0},{"i":"a17","n":"資訊安全事件通報","f":"adhoc","m":null,"r":null,"c":"IS-P-04-021","d":"IS-P-02-011","w":"權責單位","a":1},{"i":"a18","n":"矯正／持續改善","f":"adhoc","m":null,"r":null,"c":"IS-P-04-028","d":"IS-P-02-014","w":"缺失權責單位","a":1},{"i":"a19","n":"文件調閱申請","f":"adhoc","m":null,"r":null,"c":"IS-P-04-004","d":"IS-P-02-002","w":"申請人","a":0},{"i":"a20","n":"會議記錄","f":"adhoc","m":null,"r":null,"c":"IS-P-04-043","d":"","w":"承辦人員","a":0}];
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+/* reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }),{threshold:.12}); $$(".rv").forEach(e=>io.observe(e));
+/* 背景：緩慢轉動的年輪 */
+(()=>{ const c=$("#bgc"),x=c.getContext("2d"); let W,H; function rs(){ W=c.width=innerWidth; H=c.height=innerHeight; } rs(); addEventListener("resize",()=>{ rs(); if(RM) draw(0); });
+  const R=[[.34,60,[8,14],"rgba(53,198,180,.16)"],[.5,-90,[2,10],"rgba(243,239,228,.10)"],[.68,140,[18,22],"rgba(242,176,30,.12)"],[.88,-200,[3,16],"rgba(243,239,228,.07)"],[1.1,260,[30,26],"rgba(91,141,239,.10)"]];
+  function draw(t){ x.clearRect(0,0,W,H); const cx=W*.84,cy=H*.16,u=Math.max(W,H); const g=x.createRadialGradient(cx,cy,0,cx,cy,u*.8); g.addColorStop(0,"rgba(31,80,120,.30)"); g.addColorStop(1,"rgba(12,21,41,0)"); x.fillStyle=g; x.fillRect(0,0,W,H);
+    R.forEach(([r,per,dash,col])=>{ x.save(); x.translate(cx,cy); x.rotate(t/1000/per*Math.PI*2); x.setLineDash(dash); x.strokeStyle=col; x.lineWidth=1.2; x.beginPath(); x.arc(0,0,u*r,0,Math.PI*2); x.stroke();
+      x.setLineDash([]); for(let k=0;k<12;k++){ const a=k*Math.PI/6; x.beginPath(); x.moveTo(Math.cos(a)*u*r,Math.sin(a)*u*r); x.lineTo(Math.cos(a)*(u*r+9),Math.sin(a)*(u*r+9)); x.stroke(); } x.restore(); });
+    if(!RM) requestAnimationFrame(draw); } draw(0); })();
+/* hero 月份 */
+const NOWM=new Date().getMonth()+1; $("#mos").innerHTML=Array.from({length:12},(_,i)=>`<span class="mo ${i+1===NOWM?"now":""}" style="--k:${i}">${i+1}月</span>`).join("");
+/* count-up */
+function cu(el,to,ms=700){ const from=+el.dataset.v||0; el.dataset.v=to; if(RM){ el.textContent=to; return; } const t0=performance.now(); (function f(n){ const p=Math.min(1,(n-t0)/ms),e=1-Math.pow(1-p,3); el.textContent=Math.round(from+(to-from)*e); if(p<1) requestAnimationFrame(f); })(t0); }
+/* ===== 工作引擎 ===== */
+const FQ=[["daily","每日","#22d3ee"],["weekly","每週","#34d399"],["monthly","每月","#fbbf24"],["quarterly","每季","#8b5cf6"],["half","每半年","#e879f9"],["yearly","每年","#34d399"]];
+const cm=x=>((x-1)%12+12)%12+1;
+const E={m:NOWM,ea:10,v:"all",open:"monthly"};
+const due=(it,m,ea)=>["daily","weekly","monthly"].includes(it.f)?true:it.f==="adhoc"?false:it.r!=null?cm(ea+it.r)===m:(it.m||[]).includes(m);
+const VF={all:()=>true,mis:it=>/網管|系統負責人|資訊/.test(it.w),aud:it=>!!it.a};
+function themeOf(m,ea){ return m===ea?"本月主題：外部稽核":m===cm(ea-1)?"本月主題：內部稽核與管理審查":m===cm(ea-2)?"本月主題：內稽計畫與稽核前準備":m===cm(ea+1)?"本月主題：外稽矯正追蹤結案":"例行月份：照頻率做完就好"; }
+function eng(){ const L=ITEMS.filter(it=>due(it,E.m,E.ea)&&VF[E.v](it));
+  cu($("#kN"),L.length); cu($("#kA"),L.filter(i=>i.a).length); const fs=new Set(); L.forEach(i=>(i.c.match(/IS-P-04-\d+/g)||[]).forEach(c=>fs.add(c))); cu($("#kF"),fs.size);
+  $("#sig").textContent=`#M${String(E.m).padStart(2,"0")}-E${E.ea}-${E.v.toUpperCase()}`; $("#theme").textContent=themeOf(E.m,E.ea);
+  const mx=Math.max(...FQ.map(([f])=>L.filter(i=>i.f===f).length),1);
+  $("#fqs").innerHTML=FQ.map(([f,n,c])=>{ const l=L.filter(i=>i.f===f); return `<div class="fq ${E.open===f&&l.length?"open":""}" style="--c:${c}"><button data-f="${f}" aria-expanded="${E.open===f}"><i></i>${n}<span class="bar"><u style="width:${l.length/mx*100}%"></u></span><em>${l.length}</em></button><ul>${l.map(i=>`<li class="${i.a?"aud":""}"><span>${i.n}</span><code>${i.c||"—"}</code></li>`).join("")}</ul></div>`; }).join("");
+  $$("#oM .opt").forEach(b=>b.classList.toggle("on",+b.dataset.k===E.m)); $$("#oE .opt").forEach(b=>b.classList.toggle("on",+b.dataset.k===E.ea)); $$("#oV .opt").forEach(b=>b.classList.toggle("on",b.dataset.k===E.v)); gates(); }
+$("#oM").innerHTML=Array.from({length:12},(_,i)=>`<button class="opt" data-k="${i+1}">${i+1}月</button>`).join("");
+$("#oE").innerHTML=[9,10,11].map(m=>`<button class="opt" data-k="${m}">${m} 月<small>外部稽核</small></button>`).join("");
+$("#oV").innerHTML=[["all","全部工作","整個機關"],["mis","資訊人員","主辦的工作"],["aud","稽核必要","一定會被看"]].map(([k,n,s])=>`<button class="opt" data-k="${k}">${n}<small>${s}</small></button>`).join("");
+$("#oM").onclick=e=>{ const b=e.target.closest(".opt"); if(b){ E.m=+b.dataset.k; eng(); } };
+$("#oE").onclick=e=>{ const b=e.target.closest(".opt"); if(b){ E.ea=+b.dataset.k; eng(); } };
+$("#oV").onclick=e=>{ const b=e.target.closest(".opt"); if(b){ E.v=b.dataset.k; eng(); } };
+$("#fqs").onclick=e=>{ const b=e.target.closest("button"); if(b){ E.open=E.open===b.dataset.f?"":b.dataset.f; eng(); } };
+/* ===== 稽核節奏 ===== */
+const GT=[["內稽計畫",-2,["y37","y21","y28"]],["內部稽核",-1,["y38","y39","y40"]],["管理審查",-1,["y41","y42"]],["外部稽核",0,["y43","y44"]],["矯正結案",1,["y45","y49"]]]; let gi=3;
+function gates(){ $("#gates").innerHTML=GT.map(([n,r],i)=>`<button class="gate ${i===gi?"cur":""}" data-i="${i}"><div class="hex"><span>${cm(E.ea+r)}月</span></div><b>${n}</b><small>${r===0?"稽核當月":r<0?`稽核前 ${-r} 個月`:`稽核後 ${r} 個月`}</small></button>`).join("");
+  const [n,r,ids]=GT[gi]; $("#gdet").innerHTML=`<h3>${cm(E.ea+r)} 月　${n}　要交的東西</h3>`+ids.map(id=>{ const it=ITEMS.find(x=>x.i===id); return it?`<div><span>${it.n}</span><code>${it.c||"—"}</code></div>`:""; }).join(""); }
+$("#gates").onclick=e=>{ const b=e.target.closest(".gate"); if(b){ gi=+b.dataset.i; gates(); } };
+/* ===== 情資自動化 ===== */
+const N=84,KEV=18,HIT=21,COLS=14; const ST=[["同步",2600],["初篩排序",3000],["逐則判斷",3600],["批次排除",3000],["產出表單",4200]];
+const kinds=[...Array(KEV).fill("kev"),...Array(HIT).fill("hit"),...Array(N-KEV-HIT).fill("")]; const rnd=kinds.map((k,i)=>({k,si:i,o:Math.random()})).sort((a,b)=>a.o-b.o);
+const tiles=rnd.map((t,slot)=>{ const e=document.createElement("div"); e.className="tile"; $("#tiles").appendChild(e); return {...t,e,slot}; });
+const sorted=[...tiles].sort((a,b)=>({kev:0,hit:1,"":2}[a.k]-{kev:0,hit:1,"":2}[b.k])||a.si-b.si);
+const place=(t,i)=>{ t.e.style.left=(i%COLS)*7.14+"%"; t.e.style.top=Math.floor(i/COLS)*40+"px"; };
+$("#steps").innerHTML=ST.map(([n],i)=>`<button data-s="${i}"><b>${i+1}</b>${n}</button>`).join("");
+let cs=-1, ctiAuto=!RM, ctiTm=[], ctiSeen=false; const T2=(f,ms)=>ctiTm.push(setTimeout(f,ms));
+const setC=(a,t,i,o,k)=>{ $("#cA").textContent=a; $("#cT").textContent=t; $("#cI").textContent=i; $("#cO").textContent=o; $("#cK").textContent=k; };
+function log(lines){ const L=$("#log"); L.innerHTML=""; lines.forEach((h,i)=>T2(()=>{ $$("#log .cur").forEach(x=>x.classList.remove("cur")); const d=document.createElement("div"); d.className="ln cur"; d.innerHTML=h; L.appendChild(d); },RM?0:i*520)); }
+function ctiStep(s){ ctiTm.forEach(clearTimeout); ctiTm=[]; cs=s; $$("#steps button").forEach((b,i)=>{ b.classList.toggle("on",i===s); b.style.setProperty("--dur",(ctiAuto?ST[s][1]:0)+"ms"); });
+  /* 依步驟重建狀態，讓任何一步都能直接跳 */
+  $("#formrow").classList.remove("show"); tiles.forEach(t=>{ t.e.className="tile"+(s>=1||true?"":""); });
+  if(s===0){ tiles.forEach(t=>place(t,t.slot)); setC(0,0,0,0,0); tiles.forEach((t,i)=>T2(()=>{ t.e.classList.add("in"); if(i%4===0||i===N-1) setC(i+1,i+1,0,0,0); },RM?0:i*20));
+    log(["<b>&gt;</b> 讀取情資表「2026年11月」分頁","<b>&gt;</b> 依標題列名稱對應欄位（11 欄）","<em>✓ 讀入 84 則，重複同步不會產生重複資料</em>"]); }
+  else { const order=sorted; order.forEach((t,i)=>{ place(t,i); t.e.classList.add("in"); if(t.k) t.e.classList.add(t.k==="kev"?"kev":"hit"); t.e.textContent=t.k==="kev"?"KEV":t.k?"命中":""; });
+    const plain=order.filter(t=>!t.k);
+    if(s===1){ setC(N,N,0,0,KEV); log(["<b>&gt;</b> 比對本機關設備與軟體關鍵字","<s>▲ 命中 21 則</s>（Windows、Tomcat、SQL Server…）","<s>▲ KEV 已知被利用 18 則</s>，排到最前面","<em>✓ 其餘 45 則兩者都不是</em>"]); }
+    if(s>=2){ order[0].e.classList.add("adopt"); order[0].e.textContent="納入"; order[1].e.classList.add("adopt"); order[1].e.textContent="納入"; plain[0].e.classList.add("gone"); }
+    if(s===2){ setC(N,N-3,2,1,KEV); log(["<b>&gt;</b> Windows 安全性更新　<em>納入</em>：威脅情資／技術預防和檢測控制","<b>&gt;</b> Tomcat 遠端執行漏洞　<em>納入</em>：預定完成 11/24","<b>&gt;</b> 某品牌攝影機韌體　不適用：未使用該產品","<em>✓ 分級、對策、期限，一列判斷完</em>"]); }
+    if(s>=3){ plain.slice(1).forEach((t,i)=>s===3?T2(()=>t.e.classList.add("gone"),RM?0:i*22):t.e.classList.add("gone")); }
+    if(s===3){ setC(N,37,2,45,KEV); log(["<b>&gt;</b> 沒命中關鍵字且非 KEV：44 則","<b>&gt;</b> 一鍵列為不適用，理由留在篩選紀錄","<s>▲ KEV 不會被批次處理，一定要人看過</s>","<em>✓ 待判斷剩 37 則</em>"]); }
+    if(s===4){ setC(N,37,2,45,KEV); $("#formrow").classList.add("show"); const no="P-R-052-261130-01"; $("#rno").textContent=""; [...no].forEach((c,i)=>T2(()=>$("#rno").textContent=no.slice(0,i+1),RM?0:300+i*60)); log(["<b>&gt;</b> 產出 IS-P-04-052 情資管理表（V2.0 九欄）","<b>&gt;</b> 填入日期 115/11/30，自動產生紀錄編號","<b>&gt;</b> 月報第五節同步帶入件數","<em>✓ A4 橫向，列印即可呈核</em>"]); } }
+  if(ctiAuto) T2(()=>ctiStep((s+1)%ST.length),ST[s][1]+(s===4?1500:0)); }
+$("#steps").onclick=e=>{ const b=e.target.closest("button"); if(b){ ctiAuto=false; $("#ctiPlay").textContent="自動播放"; ctiStep(+b.dataset.s); } };
+$("#ctiPlay").onclick=e=>{ ctiAuto=!ctiAuto; e.target.textContent=ctiAuto?"暫停":"自動播放"; ctiStep(Math.max(cs,0)); };
+$("#ctiRe").onclick=()=>{ ctiAuto=true; $("#ctiPlay").textContent="暫停"; ctiStep(0); };
+new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting&&!ctiSeen){ ctiSeen=true; ctiStep(0); } }),{threshold:.3}).observe($("#cti .cti"));
+tiles.forEach(t=>place(t,t.slot));
+/* ===== 日誌 → 月報 ===== */
+const CR=["系統紀錄異常檢查","防火牆與網路監控","伺服器服務監控","資料庫備份確認","EDR／防毒告警","機房溫濕度","機房工作日誌"];
+$("#cal").innerHTML=`<h3 style="margin-bottom:14px">每日巡檢　115 年 11 月</h3>`+CR.map(n=>`<div class="row"><span>${n}</span>${"<i></i>".repeat(20)}</div>`).join("");
+let calD=0, calOn=false; function calTick(){ const rows=$$("#cal .row"); if(calD>=20){ if(RM) return; setTimeout(()=>{ rows.forEach(r=>[...r.querySelectorAll("i")].forEach(i=>i.className="")); calD=0; $("#rA").textContent="0／20"; $("#rB").textContent="0"; calTick(); },2600); return; }
+  rows.forEach((r,ri)=>{ r.querySelectorAll("i")[calD].className=(calD===11&&ri===6)?"n":"y"; }); calD++; $("#rA").textContent=`${calD}／20`; $("#rB").textContent=calD>11?"1":"0"; setTimeout(calTick,RM?0:230); }
+new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting&&!calOn){ calOn=true; calTick(); } }),{threshold:.3}).observe($("#cal"));
+/* bars */
+$("#bars").innerHTML=[30,45,38,60,52,70,64,82,76,90,96,40].map((h,i)=>`<i style="--h:${h}%;--dl:${i*.05}s"></i>`).join("");
+/* ===== 系統畫面 ===== */
+const SH=[["home","本月工作","index.html｜本月工作"],["cti1","資安情資","index.html｜資安情資"],["kpi","KPI 量測","index.html｜KPI 量測"],["room","機房日誌","index.html｜機房日誌"],["p052","情資管理表","IS-P-04-052情資管理表.html"]];
+$("#stabs").innerHTML=SH.map(([k,n],i)=>`<button data-i="${i}" class="${i?"":"on"}">${n}</button>`).join("");
+function shot(i){ $$("#stabs button").forEach((b,j)=>b.classList.toggle("on",i===j)); $("#simg").src=`shots/${SH[i][0]}.jpg`; $("#simg").alt=`系統畫面：${SH[i][1]}（示範資料）`; $("#surl").textContent=SH[i][2]; $("#sview").scrollTop=0; $("#sview").scrollLeft=0; }
+$("#stabs").onclick=e=>{ const b=e.target.closest("button"); if(b) shot(+b.dataset.i); }; shot(0);
+/* stats */
+const STS=[[95,"工作項目"],[7,"執行頻率"],[54,"四階表單"],[27,"有效性量測"],[4,"資安目標"],[22,"事件腳本"],[3,"年一循環"]];
+$("#stats").innerHTML=STS.map(([v,n])=>`<div><b class="grad" data-to="${v}">0</b><span>${n}</span></div>`).join("");
+new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ $$("#stats b").forEach(b=>cu(b,+b.dataset.to,1200)); } }),{threshold:.4}).observe($("#stats"));
+eng();
+</script></body></html>

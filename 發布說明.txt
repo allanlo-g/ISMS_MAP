@@ -1,0 +1,12 @@
+ISMS 工作地圖　網站發布包
+
+把這個資料夾的所有檔案（含 shots 資料夾）上傳到同一個網址底下即可，例如 GitHub Pages。
+  index.html   互動宣傳網頁（入口）
+  game.html    互動遊戲：承辦人的 30 天
+  tour.html    互動導覽
+  og-*.jpg     分享時顯示的縮圖（1200×630）
+
+分享縮圖：
+三個網頁都已設定標題、說明與縮圖。LINE、Facebook 等平台抓縮圖時需要完整網址，
+上線後請把三個 html 裡的 og:image 與 twitter:image 由 "og-promo.jpg" 這類相對路徑，
+改成完整網址，例如 https://您的網址/og-promo.jpg。
