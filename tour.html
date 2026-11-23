@@ -23,7 +23,7 @@
 :root{--navy:#101b33;--navy2:#182a4e;--paper:#f1f3ef;--ink:#16202e;--teal:#0f6f72;--teal2:#35c6b4;--amber:#f2b01e;--red:#d8473a;--sans:"Noto Sans TC","Noto Sans CJK TC","Microsoft JhengHei","PingFang TC",sans-serif;--serif:"Noto Serif TC","Noto Serif CJK TC","Source Han Serif TC","Songti TC","PMingLiU",serif;--num:"Times New Roman",serif}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:100%;height:100%;overflow:hidden;background:#070d1c;font-family:var(--sans);color:#fff}
-#fit{position:fixed;left:0;top:0;right:0;bottom:var(--barh,96px);overflow:hidden}
+#fit{position:fixed;inset:0;overflow:hidden}
 #stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;overflow:hidden;background:var(--navy);cursor:pointer}
 /* 互動熱點 */
 #hot{position:absolute;z-index:9998;width:150px;height:64px;margin:-32px 0 0 -75px;border-radius:12px;border:5px solid var(--amber);background:rgba(242,176,30,.16);cursor:pointer;visibility:hidden;animation:pulse 1.1s ease-in-out infinite}
@@ -50,7 +50,20 @@ html,body{width:100%;height:100%;overflow:hidden;background:#070d1c;font-family:
 #seek{flex:1 1 180px;min-width:120px;accent-color:#f2b01e;height:22px}
 #tm{font:500 14px/1 var(--num);min-width:86px;text-align:center}
 :focus-visible{outline:3px solid #fff;outline-offset:2px}
-@media (max-height:480px){#bar{padding:5px 10px 6px}#chap{margin-bottom:5px}#chap button{height:22px;font-size:11px;line-height:22px}#ctl button{height:30px}#ctl{gap:8px}}
+/* 畫面放不下控制列時：控制列疊在影片上，播放中自動隱藏 */
+body.ovl #bar{background:linear-gradient(rgba(7,13,28,0),rgba(7,13,28,.92) 46%);border-top:0;padding:26px 12px 8px;transition:opacity .25s;opacity:0;pointer-events:none}
+body.ovl.show #bar{opacity:1;pointer-events:auto}
+body.ovl #chap{margin-bottom:6px;gap:3px}
+body.ovl #chap button{height:16px;font-size:0;border-radius:3px}
+body.ovl #ctl{gap:8px;flex-wrap:nowrap}
+body.ovl #ctl button{height:34px;padding:0 10px;font-size:13px}
+body.ovl #ctl #pp{min-width:64px}
+body.ovl #ctl #spd{display:none}
+body.ovl #tm{min-width:74px;font-size:13px}
+body.ovl #seek{min-width:60px}
+#pl{position:fixed;left:0;bottom:0;height:3px;background:#f2b01e;width:0;z-index:5;display:none}
+body.ovl:not(.show) #pl{display:block}
+@media (max-width:520px){body.ovl #tm{display:none}body.ovl #fs{display:none}}
 @media (max-width:760px){#chap button{font-size:0}#chap button.on{font-size:12px;flex-grow:calc(var(--w) * 4)}#ctl .opt{display:none}}
 .sc{position:absolute;inset:0;overflow:hidden;visibility:hidden}
 .dark{background:radial-gradient(1400px 900px at 78% 18%,#1f3766 0%,var(--navy) 62%)}
@@ -211,6 +224,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#070d1c;font-family:
 <button id="bigplay" aria-label="播放"></button>
 <div id="endbox"><button class="pri" data-go="0">重新播放</button><button data-go="s5">再看一次資安情資</button><a href="mailto:isms@medsigtw.com">業務聯絡 isms@medsigtw.com</a><a href="https://www.medsigtw.com/" target="_blank" rel="noopener">www.medsigtw.com</a></div>
 </div></div>
+<div id="pl"></div>
 <div id="bar">
   <div id="chap"></div>
   <div id="ctl">
@@ -297,10 +311,16 @@ const ORD=["s1","s2","s3","s4","s5","s6","s7","s8","s9","end"];
 const GATES=[{t:T.s5+3.0,x:1002,y:396,w:120,h:56,msg:"請按一下「同步情資表」"},{t:T.s5+14.3,x:988,y:462,w:340,h:50,msg:"請按一下，把不相關的 45 則排除"}];
 let t=0, playing=!matchMedia("(prefers-reduced-motion: reduce)").matches, speed=1, inter=false, wait=null, last=0;
 const stage=$("stage"), fitEl=$("fit"), bar=$("bar"), hot=$("hot");
-function fit(){ document.documentElement.style.setProperty("--barh",bar.offsetHeight+"px"); const W=fitEl.clientWidth,H=fitEl.clientHeight,k=Math.min(W/1920,H/1080); stage.style.transform=`translate(${(W-1920*k)/2}px,${(H-1080*k)/2}px) scale(${k})`; }
+let ovl=false, hideTm=0;
+function fit(){ const W=fitEl.clientWidth,H=fitEl.clientHeight; document.body.classList.remove("ovl"); const bh=bar.offsetHeight;
+  /* 影片下方剩餘空間夠放控制列就排在影片下方，不夠就疊在影片上，不佔影片的大小 */
+  ovl=(H-W*9/16)<bh+6; document.body.classList.toggle("ovl",ovl);
+  if(ovl){ const k=Math.min(W/1920,H/1080); stage.style.transform=`translate(${(W-1920*k)/2}px,${(H-1080*k)/2}px) scale(${k})`; bar.style.top=""; bar.style.bottom="0"; poke(); }
+  else { const k=W/1920, vh=1080*k, top=Math.max(0,(H-vh-bh)/2); stage.style.transform=`translate(0px,${top}px) scale(${k})`; bar.style.bottom="auto"; bar.style.top=(top+vh)+"px"; document.body.classList.add("show"); } }
+function poke(){ document.body.classList.add("show"); clearTimeout(hideTm); if(ovl) hideTm=setTimeout(()=>{ if(ovl&&playing&&!wait&&!bar.matches(":hover")&&!bar.contains(document.activeElement)) document.body.classList.remove("show"); else if(ovl) poke(); },2600); }
 $("chap").innerHTML=CH.map(([id,n],i)=>`<button data-go="${id}" style="--w:${(T[ORD[i+1]]-T[id]).toFixed(1)}" title="${n}"><i></i><span>${i+1}　${n}</span></button>`).join("");
 const fmt=x=>`${Math.floor(x/60)}:${String(Math.floor(x%60)).padStart(2,"0")}`;
-function ui(){ $("pp").textContent=wait?"等你操作":playing?"暫停":t>=END-.05?"重播":"播放"; $("tm").textContent=`${fmt(t)} / ${fmt(END)}`; if(document.activeElement!==$("seek")||!dragging) $("seek").value=t;
+function ui(){ $("pl").style.width=(t/END*100)+"%"; if(ovl&&(!playing||wait)) document.body.classList.add("show"); $("pp").textContent=wait?"等你操作":playing?"暫停":t>=END-.05?"重播":"播放"; $("tm").textContent=`${fmt(t)} / ${fmt(END)}`; if(document.activeElement!==$("seek")||!dragging) $("seek").value=t;
   [...$("chap").children].forEach((b,i)=>{ const a=T[ORD[i]],e=T[ORD[i+1]]; b.querySelector("i").style.width=Math.max(0,Math.min(1,(t-a)/(e-a)))*100+"%"; b.classList.toggle("on",t>=a&&t<e||(i===8&&t>=e)); });
   $("bigplay").style.visibility=(!playing&&!wait&&t<END-.05)?"visible":"hidden"; $("endbox").style.visibility=(t>=T.s9+4.2)?"visible":"hidden";
   hot.style.visibility=wait?"visible":"hidden"; if(wait){ hot.style.left=wait.x+"px"; hot.style.top=wait.y+"px"; hot.style.width=wait.w+"px"; hot.style.height=wait.h+"px"; hot.style.margin=`${-wait.h/2}px 0 0 ${-wait.w/2}px`; hot.firstElementChild.textContent=wait.msg; hot.firstElementChild.style.top=(wait.h+14)+"px"; } }
@@ -323,9 +343,12 @@ $("fs").onclick=()=>{ try{ (document.fullscreenElement?document.exitFullscreen()
 function passGate(e){ if(e) e.stopPropagation(); if(!wait) return; t=wait.t+.02; wait=null; playing=true; last=performance.now(); draw(); }
 hot.onclick=passGate; hot.onkeydown=e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); passGate(e); } };
 $("bigplay").onclick=e=>{ e.stopPropagation(); play(); };
-stage.onclick=()=>{ if(wait) return; playing?pause():play(); };
+let lastType="mouse"; addEventListener("pointerdown",e=>{ lastType=e.pointerType; },true);
+stage.onclick=()=>{ if(wait) return; if(ovl&&lastType==="touch"&&!document.body.classList.contains("show")){ poke(); return; } playing?pause():play(); poke(); };
+["pointermove","keydown"].forEach(ev=>addEventListener(ev,()=>{ if(ovl) poke(); },{passive:true})); bar.addEventListener("pointerdown",()=>poke()); bar.addEventListener("input",()=>poke());
 document.addEventListener("keydown",e=>{ if(e.target.tagName==="INPUT"||e.target===hot) return; if(e.key===" "){ e.preventDefault(); $("pp").click(); } else if(e.key==="ArrowRight") seek(t+5); else if(e.key==="ArrowLeft") seek(t-5); else if(/^[1-9]$/.test(e.key)) go(CH[+e.key-1][0]); });
 addEventListener("resize",fit); document.addEventListener("fullscreenchange",fit);
+try{ if(window.self!==window.top) document.getElementById("rot").classList.remove("need"); }catch(e){ document.getElementById("rot").classList.remove("need"); }
 const h=(location.hash||"").slice(1); if(T[h]!=null&&h!=="end") t=T[h];
 fit(); draw(); last=performance.now(); requestAnimationFrame(loop); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>{ fit(); draw(); });
 </script></body></html>
