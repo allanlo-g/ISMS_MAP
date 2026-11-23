@@ -6,7 +6,10 @@ ISMS 工作地圖　網站發布包
   tour.html    互動導覽
   og-*.jpg     分享時顯示的縮圖（1200×630）
 
+另有一組保留 www.123hi.org 聯絡資訊的版本：index123hi.html、game123hi.html、tour123hi.html、og-*-123hi.jpg。
+
 分享縮圖：
-三個網頁都已設定標題、說明與縮圖。LINE、Facebook 等平台抓縮圖時需要完整網址，
-上線後請把三個 html 裡的 og:image 與 twitter:image 由 "og-promo.jpg" 這類相對路徑，
-改成完整網址，例如 https://您的網址/og-promo.jpg。
+六個網頁的標題、說明與縮圖都已設定，縮圖網址寫的是完整網址：
+  https://allanlo-g.github.io/ISMS_MAP/
+如果之後換到別的網址，要把六個 html 裡的 og:image、twitter:image、og:url 與 canonical 一起改成新網址。
+LINE、Facebook 會快取縮圖；更新後若還是舊圖，要到各平台的偵錯工具重新抓取。
