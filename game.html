@@ -159,8 +159,11 @@ button{font-family:inherit;cursor:pointer}
 #rot small{font-weight:400;font-size:15px;color:#b9c7ea}
 #rot button{font:700 16px/1 inherit;padding:14px 22px;border-radius:10px;border:2px solid #fff;background:transparent;color:#fff}
 @media (orientation:portrait) and (max-width:700px){#rot.need{display:flex}}
+#root{position:fixed;left:0;top:0;width:100%;height:100%;overflow:hidden;transform-origin:0 0}
+#r90tip{position:absolute;left:50%;top:14px;transform:translateX(-50%);z-index:99998;background:#f2b01e;color:#2a1c00;font:700 16px/1 "Noto Sans TC","Microsoft JhengHei",sans-serif;padding:10px 16px;border-radius:999px;pointer-events:none;transition:opacity .6s}
+
 </style></head><body>
-<div id="rot" class="need" role="dialog" aria-label="建議橫放"><div class="ph"></div><div>請把手機橫放<br><small>這個頁面是橫式畫面，橫放會大很多。</small></div><button onclick="document.getElementById('rot').classList.remove('need')">直接這樣看</button></div>
+<div id="rot" class="need" role="dialog" aria-label="建議橫放"><div class="ph"></div><div>請把手機橫放<br><small>這個頁面是橫式畫面，橫放會大很多。<br>如果畫面不會跟著轉（例如從 Facebook、LINE 開啟），<br>請按「轉成橫向顯示」。</small></div><button id="rotGo" style="background:#f2b01e;border-color:#f2b01e;color:#2a1c00">轉成橫向顯示</button><button id="rotNo">直接這樣看</button></div>
 <div id="fitg" style="position:fixed;inset:0;overflow:hidden"><div id="stage">
   <div id="hud"><div class="lv" id="lv"></div><span class="nm" id="lvn"></span><span class="sp"></span><span id="clock"></span><button id="skip">跳過這關</button><button id="snd" aria-pressed="true">音效：開</button></div>
   <div id="scene"></div>
@@ -169,8 +172,24 @@ button{font-family:inherit;cursor:pointer}
 <script>
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const stage=$("#stage"), scene=$("#scene");
-function fit(){ const W=innerWidth,H=innerHeight,k=Math.min(W/1280,H/720); stage.style.transform=`translate(${(W-1280*k)/2}px,${(H-720*k)/2}px) scale(${k})`; }
-addEventListener("resize",fit); fit();
+function fit(){ const W=root.clientWidth,H=root.clientHeight,k=Math.min(W/1280,H/720); stage.style.transform=`translate(${(W-1280*k)/2}px,${(H-720*k)/2}px) scale(${k})`; }
+/* ===== 版面：把內容包進 #root；手機不會自動旋轉時（Facebook、Instagram 的內建瀏覽器）可把整個畫面轉 90 度 ===== */
+const root=document.createElement("div"); root.id="root"; [...document.body.children].forEach(c=>{ if(c.id!=="rot"&&c.tagName!=="SCRIPT") root.appendChild(c); }); document.body.insertBefore(root,document.body.firstChild);
+let r90=false; const rotEl=document.getElementById("rot");
+const EMBED=(()=>{ try{ return window.self!==window.top; }catch(e){ return true; } })();
+function layout(){ const W=document.documentElement.clientWidth||innerWidth,H=document.documentElement.clientHeight||innerHeight;
+  if(r90&&W>H) r90=false;   /* 手機已經真的轉橫了，就不必再轉 */
+  if(r90){ root.style.width=H+"px"; root.style.height=W+"px"; root.style.transform=`translateX(${W}px) rotate(90deg)`; } else { root.style.width=""; root.style.height=""; root.style.transform=""; }
+  fit(); }
+function relayout(){ layout(); [120,400,900].forEach(ms=>setTimeout(layout,ms)); }   /* iOS 轉向後尺寸會晚一點才更新 */
+function goR90(tip){ r90=true; rotEl.classList.remove("need"); layout(); if(tip){ const d=document.createElement("div"); d.id="r90tip"; d.textContent="已轉成橫向顯示，請把手機轉橫"; root.appendChild(d); setTimeout(()=>d.style.opacity="0",2600); setTimeout(()=>d.remove(),3400); } }
+document.getElementById("rotGo").onclick=()=>goR90(false);
+document.getElementById("rotNo").onclick=()=>rotEl.classList.remove("need");
+addEventListener("resize",relayout); addEventListener("orientationchange",relayout); if(window.visualViewport) visualViewport.addEventListener("resize",relayout);
+if(window.ResizeObserver) new ResizeObserver(()=>layout()).observe(document.documentElement);
+if(EMBED) rotEl.classList.remove("need");
+else if(/FBAN|FBAV|FB_IAB|Instagram/i.test(navigator.userAgent)&&matchMedia("(orientation:portrait) and (max-width:700px)").matches) goR90(true);
+layout();
 const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
 /* 音效：只在使用者按下開始後建立 */
 let AC=null, sound=true;
